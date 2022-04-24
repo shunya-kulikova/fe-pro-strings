@@ -4,7 +4,12 @@
  * @param {string} string
  * @returns {string}
  */
-export const replaceZAndVFromString = (string) => {};
+export const replaceZAndVFromString = (string) => {
+    const newStr = string.replace(/Z|z|V|v/g, "*");
+    return newStr
+};
+
+
 
 /**
  * Функция должна принять 3 аргумента и все строки. Мы передаем строку,
@@ -16,7 +21,10 @@ export const replaceZAndVFromString = (string) => {};
  * @param {string} newWord
  * @returns {string}
  */
-export const changeWord = (string, word, newWord) => {};
+export const changeWord = (string, word, newWord) => {
+    const newStr = string.replace(word, newWord);
+    return newStr
+};
 
 /**
  * Должна вернуть строку(1 аргумент) на обрезанную по длине(2 аргумент, число)
@@ -24,7 +32,10 @@ export const changeWord = (string, word, newWord) => {};
  * @param {number} length
  * @returns {string}
  */
-export const truncate = (string, length) => {};
+export const truncate = (string, length) => {
+    const newStr = string.slice(string, length);
+    return newStr
+};
 
 /**
  * Принимает строку в первом аргументе, и символ во втором
@@ -37,7 +48,13 @@ export const truncate = (string, length) => {};
  * @param {string} symbol
  * @returns {number}
  */
-export const quantityOfSymbols = (string, symbol) => {};
+export const quantityOfSymbols = (string, symbol) => {
+    let counter = 0;
+    for (let index = 0; index < string.length; index++) {
+        if (string[index].toLocaleLowerCase() === symbol.toLocaleLowerCase()) counter++;
+    }
+    return counter
+};
 
 /**
  * Принимает строку в первом аргументе, и символ во втором
@@ -54,4 +71,16 @@ export const quantityOfSymbols = (string, symbol) => {};
  * @param {string} symbol
  * @returns {number}
  */
-export const quantityOfSymbolsWithIndexOf = (string, symbol) => {};
+export const quantityOfSymbolsWithIndexOf = (string, symbol) => {
+    let counter = 0;
+    let index = 0;
+    while (true) {
+        let searchSymb = string.toLocaleLowerCase().indexOf(symbol.toLocaleLowerCase(), index);
+        if (searchSymb === -1) break;
+        else {
+            index = searchSymb + 1;
+            counter++;
+        };
+    }
+    return counter;
+};
