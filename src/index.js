@@ -5,7 +5,15 @@
  * @returns {string}
  */
 export const replaceZAndVFromString = (string) => {
-    const newStr = string.replace(/Z|z|V|v/g, "*");
+    let newStr = '';
+    for (let i =0; i < string.length; i++) {
+        if(string[i].toLowerCase() === 'z' || string[i].toLowerCase() === 'v') {
+          newStr += '*';
+        }
+        else {
+          newStr += string[i];
+        }
+      }
     return newStr
 };
 
@@ -22,8 +30,8 @@ export const replaceZAndVFromString = (string) => {
  * @returns {string}
  */
 export const changeWord = (string, word, newWord) => {
-    const newStr = string.replace(word, newWord);
-    return newStr
+    let rightWord = string.indexOf(word);
+   return string.slice(0, rightWord) + newWord + string.slice(rightWord + word.length, string.length);
 };
 
 /**
